@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //D1
+        let car = {
+            manifacture: 'BMW',
+            "year of realise": 2020,
+            "average speed": 150,
+            printInfo(){
+                console.log(`Manifacture: ${this.manifacture}, year of realise: ${this["year of realise"]}, average speed${this["average speed"]}km/h`);
+            },
+            timeframe(distance){
+                let hours=0;
+                while(distance-this["average speed"]>0)
+                {
+                    distance=distance-this["average speed"];
+                    if(hours%4!=0)
+                    hours++;
+                    else
+                    hours=hours+2;
+                }
+                console.log("The timeframe is: "+hours);
+            }
+            
+
+        }
+        car.printInfo();
+        car.timeframe(700);
+
+        //d2
+        let fraction = {
+            numerator: 64,
+            denominator: 16
+        };
+        let fraction1 = {};
+        fraction1.numerator=1;
+        fraction1.denominator=4;
+        function sum(obj1, obj2){
+            console.log(`The sum of these two fractions is: ${obj1.numerator/obj1.denominator + obj2.numerator/obj2.denominator}`);
+        }
+        function deduction(obj1, obj2){
+            console.log(`The deduction of these two fractions is: ${obj1.numerator/obj1.denominator - obj2.numerator/obj2.denominator}`);
+        }
+        function multiplication(obj1, obj2){
+            console.log(`The multiplication of these two fractions is: ${(obj1.numerator*obj2.numerator)/ (obj1.denominator*obj2.denominator)}`);
+        }
+        function division(obj1, obj2){
+            console.log(`The division of these two fractions is: ${(obj1.numerator*obj2.denominator)/ (obj1.denominator*obj2.numerator)}`);
+        }
+        function simplify(obj){
+            if(obj.numerator>obj.denominator){
+                for(let i=1;i<=obj.numerator;i++){
+                    if(obj.numerator%i==0 && obj.denominator%i==0)
+                    divider=i;
+                }
+            }else{
+                for(let i=1;i<=obj.denominator;i++){
+                    if(obj.numerator%i==0 && obj.denominator%i==0)
+                    divider=i;
+                }
+            }
+            obj.numerator=obj.numerator/divider;
+            obj.denominator=obj.denominator/divider;
+            console.log(`After simplifying the numerator is ${obj.numerator} and denominator is ${obj.denominator}`);
+        }
+        sum(fraction,fraction1);
+        deduction(fraction,fraction1);
+        multiplication(fraction,fraction1);
+        division(fraction,fraction1);
+        simplify(fraction);
+
+
+        //d3
+        let time = {
+            hour: 20,
+            minutes: 59,
+            seconds: 40,
+            tellTime(){
+                console.log(`The time is: ${this.hour}:${this.minutes}:${this.seconds}`);
+            },
+            changeSeconds(sec){
+                let newSeconds=this.seconds+sec;
+                let plusMinutes=0;
+                while(newSeconds-60>=0){
+                    newSeconds=newSeconds-60;
+                    plusMinutes++;
+                }
+                
+                let newMinutes=this.minutes+plusMinutes;
+                let plusHours=0;
+                while(newMinutes-60>=0){
+                    newMinutes=newMinutes-60;
+                    plusHours++;
+                }
+                
+                let newHours = this.hour+plusHours;
+                if(newHours>23){
+                    newHours=0;
+                }
+                
+                console.log(`New time after changing the seconds: ${newHours}:${newMinutes}:${newSeconds}`);
+
+            },
+            changeMinutes(min){
+                let plusHours=0;
+                let newMinutes=this.minutes+min;
+                while(newMinutes-60>=0){
+                    newMinutes=newMinutes-60;
+                    plusHours++;
+                }
+                
+                let newHours=this.hour+plusHours;
+                if(newHours>23){
+                    newHours=0;
+                }
+                
+                console.log(`New time after changing the minutes: ${newHours}:${newMinutes}:${this.seconds}`);
+
+            },
+            changeHour(hr){
+                if(hr>23)
+                this.hour=00;
+                else
+                this.hour=hr;
+                console.log(`New time after changing the hour: ${this.hour}:${this.minutes}:${this.seconds}`);
+
+            }
+        };
+        time.tellTime();
+        time.changeSeconds(350);
+        time.changeMinutes(30);
+        time.changeHour(22);
+    </script>
+</body>
+</html>
